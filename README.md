@@ -1,5 +1,2 @@
-# learning-git
-Hello, World!
-
-This is a demo project for learning how to use Git.
+# 我要好好学习，化工编程加油
 
