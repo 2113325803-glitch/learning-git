@@ -9,10 +9,12 @@ print("数据类型:", temperatures.dtype)  # 自动推断为 float64
 
 # 方式二：生成等差数列（化工里做温度梯度实验常用）
 temps = np.linspace(100, 200, 11)  # 从100到200，等分11个点 
+#参数=（起始值，结束值，总点数）
 print("温度梯度:", temps)
 
 # 方式三：生成全 0、全 1 数组
 zeros = np.zeros((3, 4))  # 3行4列全0矩阵
+#参数是元组（行数，列数）       np.ones() 同理生成全1矩阵
 print("全0矩阵:\n", zeros)
 
 # ============ 2. 数组运算（元素级运算，比for循环快100倍） ============
@@ -20,7 +22,7 @@ print("全0矩阵:\n", zeros)
 yields = np.array([65.0, 78.5, 92.0, 89.0, 75.0])
 
 # 全部加10，不写for循环！
-yields_plus = yields + 10
+yields_plus = yields + 10   #每个元素都加10
 print("收率+10:", yields_plus)
 
 # 全部求平方（用于计算方差）
