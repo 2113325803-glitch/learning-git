@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  # 1. 数据库服务
+  mysql:
+    image: mysql:8.0
+    container_name: chem-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"       # ⚠️ 换成你自己的密码
+      MYSQL_DATABASE: "chemical_lab"
+    ports:
+      - "3306:3306"                        # 把容器的 3306 映射到外部的 3306
+    volumes:
+      - mysql_data:/var/lib/mysql          # 数据持久化：容器删了数据还在
+
+  # 2. 你的 FastAPI 后端服务
+  api:
+    build: ./code                          # 用 code 目录下的 Dockerfile 构建
+    container_name: chem-api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql                              # 先启动数据库，再启动 API
+    environment:
+      - DB_HOST=mysql                      # 在容器里，直接用服务名 mysql 访问数据库
+      - DB_PASSWORD=123456                 # 替换成你的密码
+
+volumes:
+  mysql_data:
