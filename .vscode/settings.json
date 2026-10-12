@@ -1,0 +1,13 @@
+{
+    // 固定使用本仓库自带的虚拟环境 .venv (Python 3.13.9)
+    // 这样各个 Python 版本 / 环境的包互相隔离，互不影响
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+    "python-envs.defaultEnvManager": "ms-python.python:venv",
+    "python-envs.defaultPackageManager": "ms-python.python:venv",
+    "python.terminal.activateEnvironment": true,
+    // code/ 目录下的模块（storage、models、base_api 等）互相导入，
+    // 加入分析路径后编辑器才能解析这些 import
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/code"
+    ]
+}
